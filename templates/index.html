@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PhishDetector</title>
+
+  <!-- Favicons -->
+  <link href="static/assets/img/newlogo.jpg" rel="icon">
+  <link href="static/assets/img/newlogo.jpg" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="static/style.css" rel="stylesheet">
+  <link href="static/dark-theme.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="{{ url_for('home') }}">PhishDetector</a></h1>
+      <a href="{{ url_for('home') }}" class="logo mr-auto"><img src="static/assets/img/newlogo.jpg" alt="" class="img-fluid"></a>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a onclick="scrolldiv()">About</a></li>
+          <li><a href="{{ url_for('usecases') }}" target="_blank">Usecases</a></li>
+          <li class="drop-down"><a href="#">Help</a>
+            <ul>
+              <li class="drop-down"><a href="#">Report Phishing Cases</a>
+                <ul>
+                  <li><a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en" target="_blank">Google Safe Browsing</a></li>
+                  <li><a href="https://support.google.com/websearch/answer/106318" target="_blank">Google Support</a></li>
+                </ul>
+              </li>
+              <li class="drop-down"><a href="#">Take Phishing Quiz</a>
+                <ul>
+                  <li><a href="https://www.phishingbox.com/phishing-iq-test" target="_blank">Phishingbox</a></li>
+                  <li><a href="https://www.intradyn.com/phishing-quiz/" target="_blank">Intradyn</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="static/assets/Phishing Website Identification.pdf" class="get-started-btn scrollto" download="nofallmagaguide">Download Guide <i class='bx bxs-download'></i></a>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center" data-aos="fade-up">
+
+      <h1>FAKE WEBSITE DETECTION</h1>
+
+      <!-- URL Input Form -->
+      <form action="/result" method="POST" role="form" class="form w-100 text-center">
+        <div class="row no-gutters justify-content-center">
+          <div class="col-md-8 form-group pr-md-1">
+            <input type="url" name="url" class="form-control" id="url" placeholder="Enter a URL (http or https)" required>
+          </div>
+        </div>
+        <div class="text-center mt-3"><button type="submit" class="btn btn-primary px-4">Scan URL</button></div>
+
+        <!-- Error Display -->
+        {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+
+        <!-- Result Display -->
+        {% if name %}
+        <div class="card mt-4 shadow p-3" style="max-width:700px; margin:auto;">
+          <h3 class="text-center mb-3" style="color:blue;">Website is {{ name[1] }} to use</h3>
+          <div class="text-center">
+            {% if name[3] %}
+            <button class="btn btn-success" onclick="window.open('{{name[0]}}')" target="_blank">{{ name[2] }}</button>
+            {% else %}
+            <button class="btn btn-danger" onclick="window.open('{{name[0]}}')" target="_blank">{{ name[2] }}</button>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Live Threat Scan Results -->
+        {% if live %}
+        <div class="card mt-4 shadow p-3" style="max-width:700px; margin:auto;">
+          <h4>🔍 Live Threat Scan</h4>
+          <ul class="list-group list-group-flush text-left">
+            <li class="list-group-item"><b>Final URL:</b> {{ live.final_url }}</li>
+            <li class="list-group-item"><b>Redirects:</b> {{ live.redirects }}</li>
+            <li class="list-group-item"><b>Uses HTTPS:</b> {{ live.uses_https }}</li>
+            <li class="list-group-item"><b>SSL valid:</b> {{ live.ssl_valid }}</li>
+            {% if live.ssl_expiry %}
+            <li class="list-group-item"><b>SSL expiry:</b> {{ live.ssl_expiry }}</li>
+            {% endif %}
+            {% if live.whois_age_days %}
+            <li class="list-group-item"><b>Domain age:</b> {{ live.whois_age_days }} days</li>
+            {% endif %}
+            <li class="list-group-item"><b>Hostname is IP:</b> {{ live.hostname_is_ip }}</li>
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Explainable AI Reason -->
+        {% if explanation %}
+        <div class="card mt-4 shadow p-3" style="max-width:700px; margin:auto;">
+          <h4>💡 Explainable Reason</h4>
+          <p class="mb-0">{{ explanation }}</p>
+          {% if reasons %}
+          <ul class="mt-2">
+            {% for r in reasons %}
+            <li>{{ r }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endif %}
+      </form>
+
+      <img src="static/assets/img/Phishing.gif" class="img-fluid hero-img mt-4" alt="" data-aos="zoom-in" data-aos-delay="150">
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <!-- ======= About Section ======= -->
+  <main id="main">
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>About PhishDetector</h2>
+          <p>Phishing is an internet scam in which an attacker sends out fake messages that look to come from a trusted source...</p>
+          <h3>About Us</h3>
+          <p>This project is done by Final Year Students of Computer Science and Design at Atria Institute of Technology Engineering College</p>
+          <h5 style="color:white;"><b>Sujal K<br>Tejas J<br>Rahul S<br><br>Guided By<br>MS.YASHASWINI V N</b></h5>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container d-md-flex py-4">
+      <div class="text-center text-md-center">
+        <div class="copyright">
+          <img src="static/assets/img/google.png" alt="">
+          <a href="https://phishingquiz.withgoogle.com/" target="_blank" class="get-started-btn scrollto">Take a Phishing Test by GOOGLE</a>
+          <hr />
+          <p style="padding-top: 8px; font-weight: 600;">
+            Final Year Project © 2024. All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <script>
+    function scrolldiv() {
+      document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
