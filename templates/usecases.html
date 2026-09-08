@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Phishbuster | Usecases</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/img/newlogo.jpg') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/newlogo.jpg') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Krub:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/venobox/venobox.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="{{ url_for('home') }}">PhishDetector</a></h1>
+      <a href="{{ url_for('home') }}" class="logo mr-auto"><img src="{{ url_for('static', filename='assets/img/newlogo.jpg') }}" alt="" class="img-fluid"></a>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a onclick="scrolldiv()">About</a></li>
+          <li class="active"><a href="{{ url_for('usecases') }}">Usecases</a></li>
+          <li class="drop-down"><a href="#">Help</a>
+            <ul>
+              <li class="drop-down"><a href="#">Report Phishing Cases</a>
+                <ul>
+                  <li><a href="https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en" target="_blank" rel="noopener noreferrer">Google Safe Browsing</a></li>
+                  <li><a href="https://support.google.com/websearch/answer/106318" target="_blank" rel="noopener noreferrer">Google Support</a></li>
+                </ul>
+              </li>
+              <li class="drop-down"><a href="#">Take Phishing Quiz</a>
+                <ul>
+                  <li><a href="https://www.phishingbox.com/phishing-iq-test" target="_blank" rel="noopener noreferrer">Phishingbox</a></li>
+                  <li><a href="https://www.intradyn.com/phishing-quiz/" target="_blank" rel="noopener noreferrer">Intradyn</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <a href="{{ url_for('static', filename='assets/Phishing Website Identification.pdf') }}" class="get-started-btn scrollto" download="nofallmagaguide">Download Guide <i class='bx bxs-download'></i></a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Usecases / FAQ Section ======= -->
+  <section id="faq" class="faq" style="padding-top:120px;">
+    <div class="container" data-aos="fade-up">
+      <h2 style="text-align: center; margin-top: 0; font-size: 30px; font-weight: 700;">Use case Scenarios of Phishing attacks (Data Breach examples)</h2>
+
+      <div class="faq-list" style="margin-top: 25px;">
+        <ul>
+          <li data-aos="fade-up" data-aos-delay="100">
+            <i class="bx bx-help-circle icon-help"></i>
+            <a data-toggle="collapse" class="collapse" href="#faq-list-1">Use Case Scenario #1 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
+              <p>
+                <strong>John Podesta’s Email (2016)</strong><br>
+                Attackers pretending to be Google sent an email telling Podesta to change his password after an alleged hack. The malicious link led to account takeover and thousands of emails were later leaked via WikiLeaks.
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="200">
+            <i class="bx bx-help-circle icon-help"></i>
+            <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Use Case Scenario #2 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-2" class="collapse" data-parent=".faq-list">
+              <p>
+                <strong>BenefitMall (2018)</strong><br>
+                Employee email credentials were exposed in a phishing attack, impacting customer data such as names, emails, DOBs and bank information, affecting a large network of businesses.
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="300">
+            <i class="bx bx-help-circle icon-help"></i>
+            <a data-toggle="collapse" href="#faq-list-3" class="collapsed">Use Case Scenario #3 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-3" class="collapse" data-parent=".faq-list">
+              <p>
+                <strong>Sony Pictures (2014)</strong><br>
+                Attackers used phishing and spear-phishing with malware to breach Sony’s network, exfiltrate confidential data and disable systems — costing the company heavily.
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="400">
+            <i class="bx bx-help-circle icon-help"></i>
+            <a data-toggle="collapse" href="#faq-list-4" class="collapsed">Use Case Scenario #4 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-4" class="collapse" data-parent=".faq-list">
+              <p>
+                <strong>Methodist Hospitals – Gary, Indiana</strong><br>
+                Phishing compromised staff email accounts exposing patient records (names, SSNs, insurance, medical data).
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="500">
+            <i class="bx bx-help-circle icon-help"></i>
+            <a data-toggle="collapse" href="#faq-list-5" class="collapsed">Use Case Scenario #5 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div id="faq-list-5" class="collapse" data-parent=".faq-list">
+              <p>
+                <strong>University vendor fraud (2019)</strong><br>
+                A phishing-initiated change to vendor routing numbers cost a university $315,000 in fraudulent transfers.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section><!-- End Usecases Section -->
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>About Phishbuster</h2>
+          <p>
+            Phishbuster is a project developed from the final year project “Detection of Phishing Website Using Machine Learning”. It helps users validate URLs and identify phishing websites using ML and live checks.
+          </p>
+
+          <h3>About Us</h3>
+          <p>This research was carried out by final year students of Computer Science and Design at Atria Institute of Technology Engineering College — Sujal K, Tejas J, Rahul S.</p>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Testimonials / Images Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="owl-carousel testimonials-carousel">
+          <div class="testimonial-item">
+            <img src="{{ url_for('static', filename='assets/img/pic1.png') }}" alt="Example 1" style="max-width:100%; height:auto;">
+            <p style="font-size:12px;"><b>Description:</b> Example fake Paypal security notice (image). Source: KnowBe4 (2021).</p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{{ url_for('static', filename='assets/img/pic2.png') }}" alt="Example 2" style="max-width:100%; height:auto;">
+            <p style="font-size:12px;"><b>Description:</b> Fake Gmail login page — visually similar to Google but hosted on a phishing domain.</p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{{ url_for('static', filename='assets/img/pic3.png') }}" alt="Example 3" style="max-width:100%; height:auto;">
+            <p style="font-size:12px;"><b>Description:</b> LinkedIn phishing InMail example leading to credential theft.</p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{{ url_for('static', filename='assets/img/pic4.png') }}" alt="Example 4" style="max-width:100%; height:auto;">
+            <p style="font-size:12px;"><b>Description:</b> Document containing macro payloads (malicious attachments). Source: KnowBe4 (2021).</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container d-md-flex py-4">
+      <div class="text-center text-md-center">
+        <div class="copyright">
+          <img src="{{ url_for('static', filename='assets/img/google.png') }}" alt="">
+          <a href="https://phishingquiz.withgoogle.com/" class="get-started-btn scrollto" target="_blank" rel="noopener noreferrer">Take a Phishing Test by GOOGLE</a>
+          <p style="padding-top: 8px; font-weight: 600;">
+            <a style="text-decoration:none; color:inherit;" href="https://github.com/asrith-reddy" target="_blank" rel="noopener noreferrer">Final Year Project &copy; 2024. All Rights Reserved</a>
+          </p>
+          <a href="https://github.com/asrith-reddy/Phishing-detector" target="_blank" rel="noopener noreferrer"><button style="font-size:15px" class="button3">Source Code <i class="fa fa-github"></i></button></a>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/venobox/venobox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+
+  <script>
+    function scrolldiv() {
+      var elem = document.getElementById("about");
+      if (elem) elem.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Initialize owl carousel if present
+    document.addEventListener("DOMContentLoaded", function () {
+      try {
+        // eslint-disable-next-line no-undef
+        $(".testimonials-carousel").owlCarousel({
+          autoplay: true,
+          loop: true,
+          items: 1,
+          margin: 30,
+          dots: true
+        });
+      } catch (e) {
+        // ignore if owl not loaded
+      }
+    });
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+</body>
+
+</html>
